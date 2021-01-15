@@ -1,0 +1,22 @@
+Notes:
+to edit snap docker daemon config file:
+sudo nano  /var/snap/docker/current/config/daemon.json
+
+From host to k8s inside VMS:
+kubectl --kubeconfig=${HOME}/.kube/<kubeconfig_file>
+
+https://discourse.ubuntu.com/t/multipass-port-forwarding-with-iptables/18741
+
+// https://github.com/arashkaffamanesh/kubeadm-multipass
+
+Links to follow:
+Registry:
+https://microk8s.io/docs/registry-built-in
+https://microk8s.io/docs/registry-private
+
+Git:
+https://rogerdudler.github.io/git-guide/
+
+Self:
+https://docs.google.com/document/d/1N2904rd2oQsXjtB4VrONLOjnxabk14FBTQkBsE0yiyg/edit
+
