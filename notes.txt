@@ -20,3 +20,6 @@ https://rogerdudler.github.io/git-guide/
 Self:
 https://docs.google.com/document/d/1N2904rd2oQsXjtB4VrONLOjnxabk14FBTQkBsE0yiyg/edit
 
+ROS tests:
+https://github.com/diegoferigo/ros-kubernetes
+brings up nodes, with headless service
