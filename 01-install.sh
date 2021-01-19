@@ -15,7 +15,15 @@ sudo snap install multipass
 sudo mkdir /home/markosz
 sudo mount --bind /users/markosz/ /home/markosz
 
-echo 'export PATH=$PATH:/snap/bin' >> ~/.bashrc source ~/.bashrc
+export PATH=$PATH:/snap/bin
+echo 'export PATH=$PATH:/snap/bin' >> ~/.bashrc
+
 sudo sed -i 's/\/users\/markosz/\/home\/markosz/g' /etc/passwd
-# not need to login again after this? it worked
+
+echo "set -g mouse on" >> ~/.tmux.conf
+
+sudo usermod -a -G sudo markosz
+echo "You need to log out on all terminals!"
+
+
 
