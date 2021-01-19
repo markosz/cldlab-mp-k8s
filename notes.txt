@@ -9,7 +9,12 @@ https://discourse.ubuntu.com/t/multipass-port-forwarding-with-iptables/18741
 
 // https://github.com/arashkaffamanesh/kubeadm-multipass
 
+
 Links to follow:
+
+MetalLB:
+https://github.com/ubuntu/microk8s/issues/908
+
 Registry:
 https://microk8s.io/docs/registry-built-in
 https://microk8s.io/docs/registry-private
