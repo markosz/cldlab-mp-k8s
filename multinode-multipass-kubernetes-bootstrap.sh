@@ -89,7 +89,7 @@ function deploy_k3s_distribution_worker() {
 function deploy_microk8s_distribution_master() {
   INSTANCE_NAME=$1
 
-  multipass exec $INSTANCE_NAME -- /bin/bash -c "sudo snap install microk8s --classic --channel=1.17/stable"
+  multipass exec $INSTANCE_NAME -- /bin/bash -c "sudo snap install microk8s --classic" # --channel=1.17/stable"
   multipass exec $INSTANCE_NAME -- /bin/bash -c "sudo usermod -a -G microk8s ubuntu"
 }
 
@@ -97,7 +97,7 @@ function deploy_microk8s_distribution_worker() {
   INSTANCE_NAME=$1
   MASTER_NODE_TOKEN=`get_master_token`
 
-  multipass exec $INSTANCE_NAME -- /bin/bash -c "sudo snap install microk8s --classic --channel=1.17/stable"
+  multipass exec $INSTANCE_NAME -- /bin/bash -c "sudo snap install microk8s --classic" #--channel=1.17/stable"
   multipass exec $INSTANCE_NAME -- /bin/bash -c "sudo usermod -a -G microk8s ubuntu"
   multipass exec $INSTANCE_NAME -- /bin/bash -c "/snap/bin/microk8s.join ${MASTER_NODE_TOKEN}"
 }
