@@ -10,7 +10,7 @@ sudo mount -a
 
 sudo apt install -y snapd 
 sudo snap install multipass
-
+sudo snap install kubectl
 
 sudo mkdir /home/markosz
 sudo mount --bind /users/markosz/ /home/markosz
