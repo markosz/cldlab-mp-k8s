@@ -43,7 +43,8 @@ function get_master_token() {
   if [ "$KUBERNETES_DISTRIBUTION" == "k3s" ]; then
     echo "$(multipass exec $MASTER_NODE_NAME -- /bin/bash -c "sudo cat /var/lib/rancher/k3s/server/node-token")"
   elif [ "$KUBERNETES_DISTRIBUTION" == "microk8s" ]; then
-    echo "$(multipass exec ${MASTER_NODE_NAME} -- /snap/bin/microk8s.add-node | grep "Join node with" | awk -F 'Join node with: ' '{ print $2 }' | awk -F ' ' '{ print $3}' | tr -d '\r')"
+    #echo "$(multipass exec ${MASTER_NODE_NAME} -- /snap/bin/microk8s.add-node | grep "Join node with" | awk -F 'Join node with: ' '{ print $2 }' | awk -F ' ' '{ print $3}' | tr -d '\r')"
+    echo "$(multipass exec ${MASTER_NODE_NAME} -- /snap/bin/microk8s.add-node | grep -m 1 "microk8s join " | awk -F ' ' '{ print $3}' | tr -d '\r')"
   fi
 }
 
@@ -109,7 +110,7 @@ function copy_config_file() {
   if [ "$KUBERNETES_DISTRIBUTION" == "k3s" ]; then
     MASTER_NODE_URL=`get_master_address`
 
-    multipass copy-files $INSTANCE_NAME:/etc/rancher/k3s/k3s.yaml ${HOME}/.kube/k3s.yaml
+    multipass exec $INSTANCE_NAME -- /bin/bash -c "cat /etc/rancher/k3s/k3s.yaml" > ${HOME}/.kube/k3s.yaml
     sed -ie s,https://127.0.0.1:6443,${MASTER_NODE_URL},g ${HOME}/.kube/k3s.yaml
   elif [ "$KUBERNETES_DISTRIBUTION" == "microk8s" ]; then
     multipass exec $INSTANCE_NAME -- /bin/bash -c /snap/bin/microk8s.config > ${HOME}/.kube/microk8s.yaml
